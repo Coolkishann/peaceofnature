@@ -14,55 +14,81 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="relative w-full bg-primary text-white overflow-hidden">
-      {/* Giant clipped text with nature image inside */}
-      <div className="relative w-full h-[50vh] md:h-[65vh] flex items-center justify-center overflow-hidden select-none">
-        {/* Background nature image */}
-        <img
-          src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&q=80&w=1800"
-          alt="Nature scenery"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-primary/40" />
-
-        {/* Giant text with mix-blend to create the punch-through effect */}
+    <footer className="relative w-full bg-white overflow-hidden">
+      {/* Giant full-screen text section */}
+      <div className="relative w-full min-h-[60vh] md:min-h-[75vh] flex flex-col items-center justify-center overflow-hidden select-none px-4">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-10 w-full text-center px-4"
+          viewport={{ once: true, margin: "-5%" }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-10 w-full text-center"
         >
+          {/* "PEACEOF" line — smooth light green gradient */}
           <h2
-            className="font-headline-lg text-[14vw] sm:text-[12vw] md:text-[10vw] lg:text-[9vw] font-bold leading-[0.9] tracking-tight uppercase"
+            className="font-headline-lg font-bold leading-[0.85] tracking-tighter uppercase"
             style={{
-              color: "transparent",
-              WebkitTextStroke: "2px rgba(255,255,255,0.35)",
-              backgroundImage: "url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=1800')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
+              fontSize: "clamp(56px, 15vw, 280px)",
             }}
           >
-            PEACE OF
-            <br />
+            <span
+              style={{
+                background:
+                  "linear-gradient(135deg, #6ab187 0%, #3d9b6b 30%, #2d8659 55%, #4aab78 80%, #8ecba5 100%)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+              }}
+            >
+              PEACEOF
+            </span>
+          </h2>
+
+          {/* "NATURE" line — nature image clipped into text */}
+          <h2
+            className="font-headline-lg font-bold leading-[0.85] tracking-tighter uppercase -mt-1 md:-mt-3"
+            style={{
+              fontSize: "clamp(56px, 15vw, 280px)",
+              backgroundImage:
+                "url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=1800')",
+              backgroundSize: "cover",
+              backgroundPosition: "center 40%",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
+          >
             NATURE
           </h2>
         </motion.div>
+
+        {/* Subtle decorative radial blobs */}
+        <div
+          className="absolute top-10 right-16 w-52 h-52 rounded-full pointer-events-none opacity-[0.07]"
+          style={{
+            background:
+              "radial-gradient(circle, #3d9b6b 0%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute bottom-16 left-10 w-72 h-72 rounded-full pointer-events-none opacity-[0.05]"
+          style={{
+            background:
+              "radial-gradient(circle, #6ab187 0%, transparent 70%)",
+          }}
+        />
       </div>
 
-      {/* Footer content area */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-margin-desktop py-12 flex flex-col items-center gap-8">
+      {/* Footer content area — minimal */}
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-margin-desktop pb-12 pt-4 flex flex-col items-center gap-8">
         {/* Logo */}
         <div className="flex items-center gap-3">
           <img
             src="/logo.png"
             alt="Peace of Nature"
-            className="h-8 w-8 object-contain brightness-0 invert"
+            className="h-7 w-7 object-contain"
           />
-          <span className="font-headline-sm text-[14px] font-bold tracking-[0.2em] text-white">
+          <span className="font-headline-sm text-[13px] font-bold tracking-[0.2em] text-primary/80">
             PEACE OF NATURE
           </span>
         </div>
@@ -73,7 +99,7 @@ export default function Footer() {
             <Link
               key={item.label}
               href={item.href}
-              className="text-white/50 hover:text-white transition-colors duration-200 font-label-md text-[12px] tracking-widest uppercase font-semibold"
+              className="text-primary/40 hover:text-primary transition-colors duration-200 font-label-md text-[11px] tracking-widest uppercase font-semibold"
             >
               {item.label}
             </Link>
@@ -81,11 +107,12 @@ export default function Footer() {
         </nav>
 
         {/* Divider */}
-        <div className="w-full max-w-md h-[1px] bg-white/10" />
+        <div className="w-full max-w-sm h-[1px] bg-primary/10" />
 
         {/* Copyright */}
-        <p className="text-white/30 font-body-md text-[13px] text-center">
-          © {new Date().getFullYear()} Peace of Nature Resorts. All rights reserved.
+        <p className="text-primary/30 font-body-md text-[12px] text-center">
+          © {new Date().getFullYear()} Peace of Nature Resorts. All rights
+          reserved.
         </p>
       </div>
     </footer>

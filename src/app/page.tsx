@@ -5,6 +5,7 @@ import BreatheSection from "@/components/BreatheSection";
 import ShowcaseGrid from "@/components/ShowcaseGrid";
 import VideoSanctuarySection from "@/components/VideoSanctuarySection";
 import BackToNatureSection from "@/components/BackToNatureSection";
+import GalleryShowcaseSection from "@/components/GalleryShowcaseSection";
 import PricingSection from "@/components/PricingSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import SocialShowcase from "@/components/SocialShowcase";
@@ -32,6 +33,9 @@ export default function Home() {
 
         {/* Staggered Nature Image Gallery Grid */}
         <BackToNatureSection />
+
+        {/* Immersive Gallery Showcase with Parallax */}
+        <GalleryShowcaseSection />
 
         {/* Pricing Tiers & Packages */}
         <PricingSection />

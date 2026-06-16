@@ -20,14 +20,13 @@ export default function Navbar() {
 
   const isDarkHeroPage = pathname === "/" && !isScrolled;
 
-  const bgClass = isScrolled
-    ? "bg-background/80 backdrop-blur-xl border-b border-primary/5 py-3 shadow-sm"
-    : pathname === "/"
-    ? "bg-transparent py-5"
-    : "bg-background/45 backdrop-blur-md border-b border-primary/5 py-5";
+  // Always transparent — no background, no blur, no border, no shadow
+  const bgClass = "bg-transparent py-5";
 
   const textClass = isDarkHeroPage ? "text-white" : "text-primary";
-  const linkClass = isDarkHeroPage ? "text-white/60 hover:text-white" : "text-primary/60 hover:text-primary";
+  const linkClass = isDarkHeroPage
+    ? "text-white/60 hover:text-white"
+    : "text-primary/60 hover:text-primary";
   const lineClass = isDarkHeroPage ? "bg-white" : "bg-primary";
   const buttonClass = isDarkHeroPage
     ? "bg-white text-primary hover:bg-white/90"
@@ -45,7 +44,9 @@ export default function Navbar() {
             alt="Peace of Nature logo"
             className={`h-8 w-8 object-contain transition-all duration-500 ${isDarkHeroPage ? "brightness-0 invert" : ""}`}
           />
-          <span className={`font-headline-md text-[14px] font-bold tracking-[0.2em] transition-colors duration-500 hidden sm:block ${textClass}`}>
+          <span
+            className={`font-headline-md text-[14px] font-bold tracking-[0.2em] transition-colors duration-500 hidden sm:block ${textClass}`}
+          >
             PEACE OF NATURE
           </span>
         </Link>
@@ -72,7 +73,11 @@ export default function Navbar() {
                     <motion.span
                       layoutId="activeNavLine"
                       className={`absolute bottom-0 left-0 w-full h-[2px] ${lineClass}`}
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 30,
+                      }}
                     />
                   )}
                 </Link>
