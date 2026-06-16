@@ -24,7 +24,7 @@ export default function BreatheSection() {
   return (
     <section className="py-24 md:py-32 px-margin-desktop bg-background text-on-surface max-w-[1440px] mx-auto overflow-hidden">
       <div className="max-w-5xl mx-auto flex flex-col items-center justify-center">
-        <div className="text-center font-serif italic font-light text-primary tracking-tight leading-[1.3] text-[34px] sm:text-[48px] md:text-[62px] lg:text-[76px] select-none">
+        <div className="text-center font-serif italic font-light text-primary tracking-tight leading-[1.3] text-[26px] sm:text-[44px] md:text-[62px] lg:text-[76px] select-none">
           
           {/* Row 1: Animated word-by-word */}
           <div className="mb-4 flex flex-wrap items-center justify-center gap-x-[0.3em]">
@@ -67,10 +67,10 @@ export default function BreatheSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-              className="inline-flex items-center gap-2 md:gap-3 mx-1 align-middle"
+              className="inline-flex items-center gap-1.5 md:gap-3 mx-1 align-middle"
             >
               {/* Image 1 */}
-              <span className="w-[48px] h-[60px] sm:w-[65px] sm:h-[82px] md:w-[78px] md:h-[98px] rounded-[14px] sm:rounded-[20px] overflow-hidden shadow-sm inline-block bg-neutral-200">
+              <span className="w-[40px] h-[50px] sm:w-[60px] sm:h-[75px] md:w-[78px] md:h-[98px] rounded-[12px] sm:rounded-[20px] overflow-hidden shadow-sm inline-block bg-neutral-200">
                 <img
                   src="/images/resort_cottage_1781595298152.png"
                   alt="Lush tropical valley"
@@ -79,7 +79,7 @@ export default function BreatheSection() {
               </span>
 
               {/* Animated spacer block */}
-              <span className="w-[48px] h-[60px] sm:w-[65px] sm:h-[82px] md:w-[78px] md:h-[98px] rounded-[14px] sm:rounded-[20px] inline-block bg-surface-container-high border border-primary/5 relative">
+              <span className="w-[40px] h-[50px] sm:w-[60px] sm:h-[75px] md:w-[78px] md:h-[98px] rounded-[12px] sm:rounded-[20px] inline-block bg-surface-container-high border border-primary/5 relative">
                 <span className="absolute inset-0 flex items-center justify-center">
                   <span className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-full bg-secondary/25 animate-ping" />
                   <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-secondary absolute" />
@@ -87,7 +87,7 @@ export default function BreatheSection() {
               </span>
 
               {/* Image 2 */}
-              <span className="w-[48px] h-[60px] sm:w-[65px] sm:h-[82px] md:w-[78px] md:h-[98px] rounded-[14px] sm:rounded-[20px] overflow-hidden shadow-sm inline-block bg-neutral-200">
+              <span className="w-[40px] h-[50px] sm:w-[60px] sm:h-[75px] md:w-[78px] md:h-[98px] rounded-[12px] sm:rounded-[20px] overflow-hidden shadow-sm inline-block bg-neutral-200">
                 <img
                   src="/images/resort_pool_1781595329056.png"
                   alt="Serene tropical path"

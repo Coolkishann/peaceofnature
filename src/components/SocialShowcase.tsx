@@ -143,9 +143,9 @@ function ReelCard({ reel, index }: { reel: typeof reels[0]; index: number }) {
 
 export default function SocialShowcase() {
   return (
-    <section className="py-32 px-6 md:px-margin-desktop bg-white text-black max-w-[1440px] mx-auto">
+    <section className="py-16 md:py-32 px-6 md:px-margin-desktop bg-white text-black max-w-[1440px] mx-auto">
       {/* Minimal Header */}
-      <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-8">
         <div>
           <motion.span
             initial={{ opacity: 0, y: 10 }}
