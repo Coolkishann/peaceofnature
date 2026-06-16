@@ -133,7 +133,7 @@ export default function Footer() {
           <h2
             className="font-instrument-serif font-normal leading-[0.75] tracking-tight uppercase whitespace-nowrap"
             style={{
-              fontSize: "clamp(48px, 13vw, 240px)",
+              fontSize: "clamp(58px, 16vw, 280px)",
               marginBottom: "-0.08em",
             }}
           >
