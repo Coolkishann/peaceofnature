@@ -5,6 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Contact", href: "/contact" },
+];
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
@@ -18,82 +24,94 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isDarkHeroPage = pathname === "/" && !isScrolled;
+  // Animation variants
+  const navContainer = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      },
+    },
+  };
 
-  // Always transparent — no background, no blur, no border, no shadow
-  const bgClass = "bg-transparent py-5";
-
-  const textClass = isDarkHeroPage ? "text-white" : "text-primary";
-  const linkClass = isDarkHeroPage
-    ? "text-white/60 hover:text-white"
-    : "text-primary/60 hover:text-primary";
-  const lineClass = isDarkHeroPage ? "bg-white" : "bg-primary";
-  const buttonClass = isDarkHeroPage
-    ? "bg-white text-primary hover:bg-white/90"
-    : "bg-primary text-white hover:bg-primary/95";
+  const navItemFade = {
+    hidden: { opacity: 0, y: -10 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+    },
+  };
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 flex items-center ${bgClass}`}
-    >
-      <div className="w-full max-w-[1440px] mx-auto px-margin-desktop flex justify-between items-center">
-        {/* Left Side: Logo image + text */}
-        <Link href="/" className="flex items-center gap-3 cursor-pointer">
-          <img
-            src="/logo.png"
-            alt="Peace of Nature logo"
-            className={`h-8 w-8 object-contain transition-all duration-500 ${isDarkHeroPage ? "brightness-0 invert" : ""}`}
-          />
-          <span
-            className={`font-headline-md text-[14px] font-bold tracking-[0.2em] transition-colors duration-500 hidden sm:block ${textClass}`}
-          >
-            PEACE OF NATURE
-          </span>
-        </Link>
+    <header className="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+      <motion.div
+        variants={navContainer}
+        initial="hidden"
+        animate="show"
+        className="w-full max-w-7xl mx-auto px-8 py-6 flex justify-between items-center"
+      >
+        {/* Logo — Instrument Serif */}
+        <motion.div variants={navItemFade}>
+          <Link href="/" className="cursor-pointer">
+            <span
+              className="text-3xl tracking-tight font-instrument-serif"
+              style={{ color: "#000000" }}
+            >
+              Peace of Nature
+              <sup className="text-xs align-super ml-0.5">®</sup>
+            </span>
+          </Link>
+        </motion.div>
 
-        {/* Right Side: Navigation & Button */}
-        <div className="flex items-center gap-8 md:gap-12">
-          <nav className="flex items-center gap-6 md:gap-8">
-            {[
-              { label: "HOME", href: "/" },
-              { label: "GALLERY", href: "/gallery" },
-              { label: "CONTACT", href: "/contact" },
-            ].map((item) => {
+        {/* Navigation Menu Items */}
+        <div className="flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-7">
+            {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`relative font-label-md text-[12px] tracking-widest font-semibold transition-colors duration-300 py-1 ${
-                    isActive ? textClass : linkClass
-                  }`}
-                >
-                  {item.label}
-                  {isActive && (
-                    <motion.span
-                      layoutId="activeNavLine"
-                      className={`absolute bottom-0 left-0 w-full h-[2px] ${lineClass}`}
-                      transition={{
-                        type: "spring",
-                        stiffness: 380,
-                        damping: 30,
-                      }}
-                    />
-                  )}
-                </Link>
+                <motion.div key={item.href} variants={navItemFade}>
+                  <Link
+                    href={item.href}
+                    className="relative text-sm transition-colors duration-300 py-1"
+                    style={{
+                      color: isActive ? "#000000" : "#6F6F6F",
+                    }}
+                  >
+                    {item.label}
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeNavLine"
+                        className="absolute bottom-0 left-0 w-full h-[1.5px]"
+                        style={{ backgroundColor: "#000000" }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 380,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </Link>
+                </motion.div>
               );
             })}
           </nav>
 
-          <Link href="/contact">
-            <button
-              className={`px-5 py-2.5 rounded-full font-label-md text-[11px] tracking-widest font-semibold active:scale-95 transition-all duration-300 cursor-pointer shadow-sm ${buttonClass}`}
-            >
-              BOOK STAY
-            </button>
-          </Link>
+          {/* CTA Button */}
+          <motion.div variants={navItemFade}>
+            <Link href="/contact">
+              <button
+                className="rounded-full px-6 py-2.5 text-sm cursor-pointer transition-transform duration-300 hover:scale-[1.03] active:scale-95"
+                style={{ backgroundColor: "#000000", color: "#FFFFFF" }}
+              >
+                Begin Journey
+              </button>
+            </Link>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </header>
   );
 }

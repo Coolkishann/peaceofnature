@@ -1,125 +1,153 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { RevealWords, RevealFade } from "./ScrollReveal";
 
 const showcases = [
   {
     id: "staycation",
-    category: "01",
+    number: "01",
     title: "Villas & Private Lodges",
-    desc: "Experience ultimate quiet luxury. Our signature villas blend organic architecture with floor-to-ceiling vistas, private infinity pools, and round-the-clock bespoke butler services.",
-    src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1000",
-    linkText: "EXPLORE VILLAS",
+    desc: "Signature villas blending organic architecture with private infinity pools and bespoke butler services.",
+    // Premium resort villa image
+    src: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1200",
   },
   {
     id: "restaurant",
-    category: "02",
+    number: "02",
     title: "Gourmet Coastal Dining",
-    desc: "Indulge in seasonal organic menus curated by Michelin-trained chefs. Savor freshly sourced seafood, fine local vintages, and starlit private dining experiences directly on the shore.",
-    src: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=1000",
-    linkText: "VIEW MENUS",
+    desc: "Seasonal organic menus by Michelin-trained chefs. Freshly sourced seafood and starlit dining on the shore.",
+    // Premium dining/restaurant image
+    src: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=1200",
   },
   {
     id: "services",
-    category: "03",
+    number: "03",
     title: "Bespoke Resort Services",
-    desc: "Elevate your escape. Enjoy custom wellness therapies at our holistic spa, schedule private yacht excursions, or coordinate special beachfront wedding ceremonies with our events planners.",
-    src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1000",
-    linkText: "EXPLORE SERVICES",
+    desc: "Holistic spa therapies, private yacht excursions, and beachfront wedding coordination.",
+    // Premium wellness/spa/pool image
+    src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1200",
   },
 ];
 
 export default function ShowcaseGrid() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  // Track mouse position for the floating image cursor
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   return (
     <section
       id="discover"
-      className="py-section-gap px-margin-desktop bg-white text-on-surface max-w-[1440px] mx-auto"
+      className="py-section-gap px-margin-desktop bg-white text-on-surface max-w-[1440px] mx-auto relative"
     >
-      {/* Section Header */}
-      <div className="mb-16">
+      {/* Minimal Section Header */}
+      <div className="mb-20 max-w-xl">
         <RevealFade>
-          <span className="font-label-md text-label-md text-secondary block mb-4 uppercase tracking-[0.2em] text-[13px] font-semibold">
-            Discover Peace of Nature
+          <span
+            className="font-label-md text-sm block mb-4 tracking-wider uppercase"
+            style={{ color: "#6F6F6F" }}
+          >
+            What we offer
           </span>
         </RevealFade>
         <RevealWords
           text="Curated Escapes, Designed for You"
-          className="font-headline-lg text-[36px] md:text-[48px] font-bold text-primary leading-tight"
+          className="font-instrument-serif text-[36px] md:text-[48px] font-normal leading-[1.1] tracking-tight"
         />
       </div>
 
-      {/* Modern Expanding Cards Row */}
-      <div className="flex flex-col md:flex-row gap-5 w-full">
-        {showcases.map((item, idx) => {
-          const isHovered = hoveredIdx === idx;
-          const hasHover = hoveredIdx !== null;
+      {/* Minimal Cards — clean list-style layout */}
+      <div className="flex flex-col gap-0 relative z-10" onMouseLeave={() => setHoveredIdx(null)}>
+        {showcases.map((item, idx) => (
+          <motion.div
+            key={item.id}
+            onMouseEnter={() => setHoveredIdx(idx)}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-5%" }}
+            transition={{
+              duration: 0.7,
+              ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+              delay: idx * 0.1,
+            }}
+            className="group cursor-pointer border-t border-black/10 py-10 md:py-14"
+          >
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12">
+              {/* Number */}
+              <span
+                className="font-label-md text-sm tracking-wider shrink-0 w-12 transition-colors duration-500 group-hover:text-black"
+                style={{ color: "#6F6F6F" }}
+              >
+                {item.number}
+              </span>
 
-          return (
-            <motion.div
-              key={item.id}
-              onMouseEnter={() => setHoveredIdx(idx)}
-              onMouseLeave={() => setHoveredIdx(null)}
-              className="relative overflow-hidden rounded-[28px] cursor-pointer group shadow-lg"
-              style={{
-                flex: isHovered ? 2.5 : hasHover ? 0.75 : 1,
-                transition: "flex 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-              }}
-            >
-              {/* Image */}
-              <div className="relative w-full h-[420px] md:h-[520px] overflow-hidden">
-                <motion.img
-                  src={item.src}
-                  alt={item.title}
-                  className="w-full h-full object-cover select-none pointer-events-none"
-                  animate={{ scale: isHovered ? 1.05 : 1 }}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                />
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              </div>
+              {/* Title */}
+              <h3 className="font-instrument-serif text-[28px] md:text-[36px] font-normal leading-tight flex-1 tracking-tight transition-colors duration-500 group-hover:text-[#6F6F6F]">
+                {item.title}
+              </h3>
 
-              {/* Content Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
-                {/* Category Number */}
-                <span className="font-label-md text-[11px] tracking-[0.3em] text-white/50 font-semibold uppercase block mb-3">
-                  {item.category}
-                </span>
+              {/* Description — right side */}
+              <p
+                className="font-body-md text-sm leading-relaxed max-w-xs shrink-0 hidden md:block transition-colors duration-500 group-hover:text-black"
+                style={{ color: "#6F6F6F" }}
+              >
+                {item.desc}
+              </p>
 
-                {/* Title */}
-                <h3 className="font-headline-sm text-[22px] md:text-[26px] font-bold text-white leading-tight mb-3">
-                  {item.title}
-                </h3>
-
-                {/* Description - only visible on hover */}
-                <AnimatePresence>
-                  {isHovered && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <p className="font-body-md text-white/70 text-[14px] leading-relaxed font-light mb-4 max-w-md">
-                        {item.desc}
-                      </p>
-                      <button className="flex items-center gap-2 font-label-md text-[12px] tracking-widest font-semibold text-white hover:text-secondary group/btn transition-colors">
-                        {item.linkText}{" "}
-                        <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                      </button>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </motion.div>
-          );
-        })}
+              {/* Arrow */}
+              <ArrowUpRight
+                className="w-5 h-5 shrink-0 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-black"
+                style={{ color: "#6F6F6F" }}
+              />
+            </div>
+          </motion.div>
+        ))}
+        {/* Bottom border */}
+        <div className="border-t border-black/10" />
       </div>
+
+      {/* Custom Image Cursor Follower */}
+      <AnimatePresence>
+        {hoveredIdx !== null && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="pointer-events-none fixed z-50 overflow-hidden shadow-2xl rounded-xl hidden lg:block"
+            style={{
+              width: "320px",
+              height: "200px",
+              // Center the image on the cursor
+              left: mousePos.x - 160,
+              top: mousePos.y - 100,
+            }}
+          >
+            {/* The image itself */}
+            <motion.img
+              key={hoveredIdx}
+              src={showcases[hoveredIdx].src}
+              alt="Hover preview"
+              className="w-full h-full object-cover"
+              // Slight zoom effect when switching images
+              initial={{ scale: 1.2 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -3,51 +3,47 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import BreatheSection from "@/components/BreatheSection";
 import ShowcaseGrid from "@/components/ShowcaseGrid";
+import SustainabilitySection from "@/components/SustainabilitySection";
 import VideoSanctuarySection from "@/components/VideoSanctuarySection";
 import BackToNatureSection from "@/components/BackToNatureSection";
-import GalleryShowcaseSection from "@/components/GalleryShowcaseSection";
-import PricingSection from "@/components/PricingSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import SocialShowcase from "@/components/SocialShowcase";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen w-full flex flex-col bg-background font-body-md overflow-x-hidden">
-      {/* Split Navbar */}
+    <div className="relative min-h-screen w-full flex flex-col bg-white font-body-md overflow-x-hidden">
+      {/* Navbar */}
       <Navbar />
 
-      {/* Main Page Layout using Semantic HTML */}
+      {/* Main Page */}
       <main className="flex-1 w-full">
-        {/* Parallax Image Carousel Hero */}
+        {/* Cinematic Video Hero */}
         <HeroSection />
 
-        {/* Quiet Luxury Breathing typo-graphic intro */}
+        {/* Typographic Breathing Intro */}
         <BreatheSection />
 
-        {/* Staycation, Restaurant & Resort Services Showcase */}
+        {/* Services Showcase */}
         <ShowcaseGrid />
 
-        {/* Cinematic Video Sanctuary */}
+        {/* Sustainability Inline Text Mask */}
+        <SustainabilitySection />
+
+        {/* Expanding Video Sanctuary */}
         <VideoSanctuarySection />
 
-        {/* Staggered Nature Image Gallery Grid */}
+        {/* Nature Image Gallery Grid */}
         <BackToNatureSection />
 
-        {/* Immersive Gallery Showcase with Parallax */}
-        <GalleryShowcaseSection />
-
-        {/* Pricing Tiers & Packages */}
-        <PricingSection />
-
-        {/* Testimonials Quote Slider */}
+        {/* Testimonials */}
         <TestimonialsSection />
 
-        {/* Social Instagram Reels Showcase */}
+        {/* Social Showcase */}
         <SocialShowcase />
       </main>
 
-      {/* Brand Footer */}
+      {/* Footer */}
       <Footer />
     </div>
   );

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Work_Sans } from "next/font/google";
+import { Bricolage_Grotesque, Work_Sans, Instrument_Serif } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
@@ -13,6 +13,13 @@ const workSans = Work_Sans({
   variable: "--font-work-sans",
   subsets: ["latin"],
   weight: ["300", "400", "500"],
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 export const viewport: Viewport = {
@@ -35,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolageGrotesque.variable} ${workSans.variable} h-full antialiased`}
+      className={`${bricolageGrotesque.variable} ${workSans.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <head>
         {/* Load Google Material Symbols */}
