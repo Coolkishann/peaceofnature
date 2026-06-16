@@ -38,12 +38,12 @@ const reels = [
   },
   {
     id: 3,
-    videoSrc: "/reel3.mp4",
+    videoSrc: "/reel1.mp4",
     href: "/reel1.mp4",
   },
   {
     id: 4,
-    videoSrc: "/reel4.mp4",
+    videoSrc: "/reel2.mp4",
     href: "/reel2.mp4",
   },
 ];
