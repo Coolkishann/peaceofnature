@@ -28,27 +28,23 @@ const Instagram = (props: React.SVGProps<SVGSVGElement>) => (
 const reels = [
   {
     id: 1,
-    videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-beautiful-aerial-view-of-a-resort-in-maldives-41870-large.mp4",
-    imgSrc: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&q=80&w=600",
-    href: "https://www.instagram.com/reel/DV3A7VDDPf4/",
+    videoSrc: "/reel1.mp4",
+    href: "/reel1.mp4",
   },
   {
     id: 2,
-    videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-luxury-resort-swimming-pool-and-palm-trees-41872-large.mp4",
-    imgSrc: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&q=80&w=600",
-    href: "https://www.instagram.com/reel/DWAwfXtD74s/",
+    videoSrc: "/reel2.mp4",
+    href: "/reel2.mp4",
   },
   {
     id: 3,
-    videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-woman-enjoying-a-yacht-ride-at-sunset-41718-large.mp4",
-    imgSrc: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=600",
-    href: "https://www.instagram.com/reel/DU8MlqQk9VO/",
+    videoSrc: "/reel3.mp4",
+    href: "/reel1.mp4",
   },
   {
     id: 4,
-    videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-waves-crashing-on-a-sandy-beach-under-a-blue-sky-42791-large.mp4",
-    imgSrc: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=600",
-    href: "https://www.instagram.com/reel/C8uTVvQM6Qk/",
+    videoSrc: "/reel4.mp4",
+    href: "/reel2.mp4",
   },
 ];
 
@@ -113,7 +109,6 @@ function ReelCard({ reel, index }: { reel: typeof reels[0]; index: number }) {
         <video
           ref={videoRef}
           src={reel.videoSrc}
-          poster={reel.imgSrc}
           loop
           muted
           playsInline
