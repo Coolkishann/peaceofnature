@@ -22,77 +22,125 @@ const Instagram = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+// We must use local or direct media files for the minimal custom cards. 
+// Instagram's official embed does not allow hiding the header/footer UI.
+// Replace these with your actual downloaded reel videos/covers in your public folder!
 const reels = [
   {
     id: 1,
     videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-beautiful-aerial-view-of-a-resort-in-maldives-41870-large.mp4",
-    imgSrc: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=300",
-    href: "https://www.instagram.com/peaceofnatureresort/reel/DYzToBpiQoT/",
+    imgSrc: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&q=80&w=600",
+    href: "https://www.instagram.com/reel/DV3A7VDDPf4/",
   },
   {
     id: 2,
     videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-luxury-resort-swimming-pool-and-palm-trees-41872-large.mp4",
-    imgSrc: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300",
-    href: "https://www.instagram.com/peaceofnatureresort/p/DWDdSTYApPX/",
+    imgSrc: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&q=80&w=600",
+    href: "https://www.instagram.com/reel/DWAwfXtD74s/",
   },
   {
     id: 3,
     videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-woman-enjoying-a-yacht-ride-at-sunset-41718-large.mp4",
-    imgSrc: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300",
-    href: "https://www.instagram.com/peaceofnatureresort/p/DWDdSTYApPX/",
+    imgSrc: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=600",
+    href: "https://www.instagram.com/reel/DU8MlqQk9VO/",
   },
   {
     id: 4,
     videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-waves-crashing-on-a-sandy-beach-under-a-blue-sky-42791-large.mp4",
-    imgSrc: "https://images.unsplash.com/photo-1510076857177-7470076d4098?auto=format&fit=crop&q=80&w=300",
-    href: "https://www.instagram.com/peaceofnatureresort/p/DWDdSTYApPX/",
+    imgSrc: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=600",
+    href: "https://www.instagram.com/reel/C8uTVvQM6Qk/",
   },
 ];
 
 function ReelCard({ reel, index }: { reel: typeof reels[0]; index: number }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(true);
+
   const handleMouseEnter = () => {
+    setPlaying(true);
+
     if (videoRef.current) {
-      videoRef.current
-        .play()
-        .catch(() => {});
+      videoRef.current.muted = muted;
+      videoRef.current.play().catch(() => {});
     }
   };
 
   const handleMouseLeave = () => {
+    setPlaying(false);
+
     if (videoRef.current) {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
+      videoRef.current.muted = true;
     }
+
+    setMuted(true);
+  };
+
+  const toggleSound = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!videoRef.current) return;
+
+    const nextMuted = !muted;
+    videoRef.current.muted = nextMuted;
+    setMuted(nextMuted);
   };
 
   return (
-    <a href={reel.href} target="_blank" rel="noopener noreferrer" className="block">
+    <a
+      href={reel.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block"
+    >
       <motion.div
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-10%" }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.15 }}
-        className="relative aspect-[4/5] rounded-xl overflow-hidden bg-gray-100 cursor-pointer group"
+        viewport={{ once: true }}
+        transition={{
+          duration: 0.8,
+          delay: index * 0.15,
+        }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="relative aspect-[9/16] rounded-2xl overflow-hidden bg-black group cursor-pointer"
       >
+        {/* Reel Cover/Video */}
         <video
           ref={videoRef}
           src={reel.videoSrc}
+          poster={reel.imgSrc}
           loop
           muted
           playsInline
-          poster={reel.imgSrc}
-          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none"
+          preload="metadata"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        {/* Minimal Overlay for Instagram icon on hover */}
-        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-          <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
+
+        {/* Instagram Icon Overlay */}
+        <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+          <div
+            className={`w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white transition-all duration-300 ${
+              playing ? "opacity-0" : "opacity-100"
+            }`}
+          >
             <Instagram />
           </div>
         </div>
+
+        {/* Sound Button */}
+        {playing && (
+          <button
+            onClick={toggleSound}
+            className="absolute bottom-3 right-3 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-md text-white flex items-center justify-center hover:bg-black/70 transition-colors"
+          >
+            {muted ? "🔇" : "🔊"}
+          </button>
+        )}
       </motion.div>
     </a>
   );
@@ -143,7 +191,7 @@ export default function SocialShowcase() {
         </motion.div>
       </div>
 
-      {/* Reels Grid with Staggered Animations */}
+      {/* Reels Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {reels.map((reel, index) => (
           <ReelCard key={reel.id} reel={reel} index={index} />
