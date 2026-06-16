@@ -72,7 +72,7 @@ export default function BreatheSection() {
               {/* Image 1 */}
               <span className="w-[48px] h-[60px] sm:w-[65px] sm:h-[82px] md:w-[78px] md:h-[98px] rounded-[14px] sm:rounded-[20px] overflow-hidden shadow-sm inline-block bg-neutral-200">
                 <img
-                  src="https://images.unsplash.com/photo-1545235621-546b4754ba73?auto=format&fit=crop&q=80&w=300"
+                  src="/images/resort_cottage_1781595298152.png"
                   alt="Lush tropical valley"
                   className="w-full h-full object-cover pointer-events-none"
                 />
@@ -89,7 +89,7 @@ export default function BreatheSection() {
               {/* Image 2 */}
               <span className="w-[48px] h-[60px] sm:w-[65px] sm:h-[82px] md:w-[78px] md:h-[98px] rounded-[14px] sm:rounded-[20px] overflow-hidden shadow-sm inline-block bg-neutral-200">
                 <img
-                  src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=300"
+                  src="/images/resort_pool_1781595329056.png"
                   alt="Serene tropical path"
                   className="w-full h-full object-cover pointer-events-none"
                 />

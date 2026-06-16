@@ -8,12 +8,183 @@ import { motion, AnimatePresence } from "framer-motion";
 const items = [
   { id: 1, title: "Oceanfront Sanctuary", category: "STAYS", image: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&q=80&w=1200" },
   { id: 2, title: "Michelin Dining Deck", category: "DINING", image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=800" },
-  { id: 3, title: "Holistic Spa Retreat", category: "WELLNESS", image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" },
-  { id: 4, title: "Private Yacht Cruise", category: "WELLNESS", image: "https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&q=80&w=800" },
   { id: 5, title: "Sunset Lagoon Suite", category: "STAYS", image: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=1200" },
   { id: 6, title: "Lagoon Canopy Dinner", category: "DINING", image: "https://images.unsplash.com/photo-1515263487990-61b07816b324?auto=format&fit=crop&q=80&w=800" },
-  { id: 7, title: "Infinity Thermal Soak", category: "WELLNESS", image: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=800" },
   { id: 8, title: "Tropical Gardens Lodge", category: "STAYS", image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=1200" },
+  {
+    id: 1,
+    title: "Beachfront Resort Escape",
+    category: "STAYS",
+    image: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 2,
+    title: "Open-Air Dining Pavilion",
+    category: "DINING",
+    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 3,
+    title: "Infinity Pool Retreat",
+    category: "WELLNESS",
+    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 4,
+    title: "Resort Pool Adventure",
+    category: "EXPERIENCES",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 5,
+    title: "Palm Grove Villas",
+    category: "STAYS",
+    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 6,
+    title: "Beachside Sunset Dining",
+    category: "DINING",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 7,
+    title: "Garden Wellness Escape",
+    category: "WELLNESS",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 8,
+    title: "Palm Tree Garden Walk",
+    category: "STAYS",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200",
+  },
+
+  // Wedding Celebration
+  {
+    id: 9,
+    title: "Destination Wedding Celebration",
+    category: "WEDDINGS",
+    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 10,
+    title: "Elegant Wedding Reception",
+    category: "WEDDINGS",
+    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1200",
+  },
+
+  // Waterslides & Pool
+  {
+    id: 11,
+    title: "Swimming Pool With Slides",
+    category: "EXPERIENCES",
+    image: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 12,
+    title: "Family Pool Adventure",
+    category: "EXPERIENCES",
+    image: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&q=80&w=1200",
+  },
+
+  // Brown + Golden Restaurant
+  {
+    id: 13,
+    title: "Golden Lantern Restaurant",
+    category: "DINING",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 14,
+    title: "Rustic Wooden Dining Hall",
+    category: "DINING",
+    image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&q=80&w=1200",
+  },
+
+  // Heritage Garden
+  {
+    id: 15,
+    title: "Heritage Garden Courtyard",
+    category: "GARDENS",
+    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 16,
+    title: "Palm Heritage Walk",
+    category: "GARDENS",
+    image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=1200",
+  },
+
+  // Beach Vibes
+  {
+    id: 17,
+    title: "Coconut Beach Sunset",
+    category: "BEACH",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 18,
+    title: "Palm-Lined Coastline",
+    category: "BEACH",
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 1,
+    title: "Beachfront Resort Escape",
+    category: "STAYS",
+    image:
+      "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 2,
+    title: "Open-Air Dining Pavilion",
+    category: "DINING",
+    image:
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 3,
+    title: "Tropical Pool Retreat",
+    category: "WELLNESS",
+    image:
+      "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 4,
+    title: "Pool Slides Adventure",
+    category: "EXPERIENCES",
+    image:
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 5,
+    title: "Palm Grove Villas",
+    category: "STAYS",
+    image:
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 6,
+    title: "Beachside Sunset Dining",
+    category: "DINING",
+    image:
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 7,
+    title: "Garden Wellness Escape",
+    category: "WELLNESS",
+    image:
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1200",
+  },
+  {
+    id: 8,
+    title: "Palm Tree Garden Walk",
+    category: "STAYS",
+    image:
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200",
+  },
 ];
 
 const categories = ["ALL", "STAYS", "DINING", "WELLNESS"];
@@ -21,8 +192,8 @@ const categories = ["ALL", "STAYS", "DINING", "WELLNESS"];
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState("ALL");
 
-  const filteredItems = activeCategory === "ALL" 
-    ? items 
+  const filteredItems = activeCategory === "ALL"
+    ? items
     : items.filter(item => item.category === activeCategory);
 
   return (
@@ -67,11 +238,10 @@ export default function GalleryPage() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`font-label-md text-[11px] tracking-widest uppercase transition-colors duration-300 ${
-                  activeCategory === cat
+                className={`font-label-md text-[11px] tracking-widest uppercase transition-colors duration-300 ${activeCategory === cat
                     ? "text-black border-b border-black pb-1"
                     : "text-[#6F6F6F] hover:text-black pb-1"
-                }`}
+                  }`}
               >
                 {cat}
               </button>

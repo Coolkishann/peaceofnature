@@ -19,7 +19,7 @@ const natureImages = [
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800",
+    src: "/images/resort_pool_1781595329056.png",
     alt: "Tropical palms on hill overlooking bungalow",
     className: "md:col-start-1 md:col-end-4 aspect-[3/4]",
   },
@@ -31,13 +31,13 @@ const natureImages = [
   },
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=800",
+    src: "/images/resort_cottage_1781595298152.png",
     alt: "Ornate stone temple gate in lush forest scenery",
     className: "md:col-start-10 md:col-end-13 aspect-[3/4]",
   },
   {
     id: 6,
-    src: "https://images.unsplash.com/photo-1545235621-546b4754ba73?auto=format&fit=crop&q=80&w=800",
+    src: "/images/resort_cottage_1781595298152.png",
     alt: "Steps climbing a lush green hillside",
     className: "md:col-start-2 md:col-end-5 aspect-[3/5]",
   },

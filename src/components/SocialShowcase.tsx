@@ -27,21 +27,25 @@ const reels = [
     id: 1,
     videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-beautiful-aerial-view-of-a-resort-in-maldives-41870-large.mp4",
     imgSrc: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=300",
+    href: "https://www.instagram.com/peaceofnatureresort/reel/DYzToBpiQoT/",
   },
   {
     id: 2,
     videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-luxury-resort-swimming-pool-and-palm-trees-41872-large.mp4",
     imgSrc: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300",
+    href: "https://www.instagram.com/peaceofnatureresort/p/DWDdSTYApPX/",
   },
   {
     id: 3,
     videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-woman-enjoying-a-yacht-ride-at-sunset-41718-large.mp4",
     imgSrc: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300",
+    href: "https://www.instagram.com/peaceofnatureresort/p/DWDdSTYApPX/",
   },
   {
     id: 4,
     videoSrc: "https://assets.mixkit.co/videos/preview/mixkit-waves-crashing-on-a-sandy-beach-under-a-blue-sky-42791-large.mp4",
     imgSrc: "https://images.unsplash.com/photo-1510076857177-7470076d4098?auto=format&fit=crop&q=80&w=300",
+    href: "https://www.instagram.com/peaceofnatureresort/p/DWDdSTYApPX/",
   },
 ];
 
@@ -64,31 +68,33 @@ function ReelCard({ reel, index }: { reel: typeof reels[0]; index: number }) {
   };
 
   return (
-    <motion.div
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.15 }}
-      className="relative aspect-[4/5] rounded-xl overflow-hidden bg-gray-100 cursor-pointer group"
-    >
-      <video
-        ref={videoRef}
-        src={reel.videoSrc}
-        loop
-        muted
-        playsInline
-        poster={reel.imgSrc}
-        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none"
-      />
-      {/* Minimal Overlay for Instagram icon on hover */}
-      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-        <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
-          <Instagram />
+    <a href={reel.href} target="_blank" rel="noopener noreferrer" className="block">
+      <motion.div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.15 }}
+        className="relative aspect-[4/5] rounded-xl overflow-hidden bg-gray-100 cursor-pointer group"
+      >
+        <video
+          ref={videoRef}
+          src={reel.videoSrc}
+          loop
+          muted
+          playsInline
+          poster={reel.imgSrc}
+          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 pointer-events-none"
+        />
+        {/* Minimal Overlay for Instagram icon on hover */}
+        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
+            <Instagram />
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </a>
   );
 }
 
@@ -127,7 +133,7 @@ export default function SocialShowcase() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
         >
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/peaceofnatureresort/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-black text-white px-8 py-3.5 rounded-full font-label-md text-[12px] tracking-widest uppercase transition-transform hover:scale-[1.03] active:scale-95"

@@ -52,7 +52,7 @@ export default function VideoSanctuarySection() {
       >
         <video
           ref={videoRef}
-          src="https://player.vimeo.com/external/435674703.sd.mp4?s=7fdf70275811b7c02b9213197607a97753ad0c8d&profile_id=165&oauth2_token_id=57447761"
+          src="video.mp4"
           muted
           loop
           playsInline
