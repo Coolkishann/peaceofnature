@@ -4,12 +4,12 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const headlineWords = [
-  { text: "Beyond", style: "normal" },
-  { text: "silence,", style: "italic" },
-  { text: "we", style: "normal" },
-  { text: "build", style: "normal" },
-  { text: "the", style: "italic" },
-  { text: "eternal.", style: "italic" },
+  { text: "Escape", style: "normal" },
+  { text: "to", style: "normal" },
+  { text: "nature,", style: "italic" },
+  { text: "find", style: "normal" },
+  { text: "your", style: "normal" },
+  { text: "peace.", style: "italic" },
 ];
 
 export default function HeroSection() {
@@ -146,9 +146,8 @@ export default function HeroSection() {
           className="text-base sm:text-lg max-w-2xl mt-8 leading-relaxed font-body-md"
           style={{ color: "#6F6F6F" }}
         >
-          Building platforms for brilliant minds, fearless makers, and thoughtful
-          souls. Through the noise, we craft digital havens for deep work and
-          pure flows.
+          Discover unparalleled luxury amidst breathtaking landscapes. Immerse yourself in
+          serenity and let nature rejuvenate your soul at our exclusive resort.
         </motion.p>
 
         {/* Hero CTA Button with reveal */}
